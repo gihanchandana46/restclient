@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lak Restaurant</title>
+<!--BootStrap-->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<!--JS & jQuery-->
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.cookie.min.js"></script>
+<script src="js/customer_managment.js"></script>
+<script src="js/reservation_managment.js"></script>
+<script src="js/FoodAndDrink_managment.js"></script>
+
+
+</head>
+<body>
+<div class="container-fluid" style="height:60px; background-color:#212121;> 
+	<div class="row">    	 
+    	<div class="col-sm-3" style="height:60px; color:#F50004; padding:0px; z-index:2; " id="hLogo">
+        	<a href="index.php"><img src="images/logo.png" height="70px"></a>
+        </div>
+    	<div class="col-sm-9" align="right" style="height:60px;">
+        	<ul>
+            <li class="headBar"><a href="#Contact"><span class="glyphicon glyphicon-earphone"><span class="headerFontChange">&nbsp;&nbsp;ContactUs</span> </span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Begin navigation panel-->
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="85"> 
+<div class="container-fluid"> 
+    <div class="navbar-header">
+    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      	</button>
+    	<a href="index.php" class="navbar-brand">Lak Restaurant</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="nav navbar-nav">
+        
+     </ul>
+    <ul class="nav navbar-nav navbar-right" >
+    	<li><a href="#myModal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+        <li><a href="customer/index.html"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+    </ul>
+    </div>
+    
+</div>
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Customer Login</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+						<label>Phone Number</label>
+						<input type="text" id="contactNo" placeholder="Enter Phone Number Here.." class="form-control">
+					</div>		
+					<div class="form-group">
+						<label>Password</label>
+						<input type="password" id="password" placeholder="Enter Password Here.." class="form-control">
+					</div>
+        </div>
+        <div class="modal-footer">
+        	<button type="button" class="btn btn-success" onclick="checkloginMain();saveUserID();" data-dismiss="modal">Login</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</nav> 
+<!-- End of navigation panel-->
+<!-- ******* Beginning of Editable Area ******* -->
+
+<div class="container-fluid"  style="height:500px; background-image:url(images/slideTest.jpg)"> <!--Slider StartPoint-->
+
+<!-- End Slider --> 
+</div>
+
+<div class="container-fluid"> <!--ShortCuts StartPoint-->
+<div class="row">
+	<div class="col-md-3" style="height:200px; background-color:#DDDDDD">
+    	details here..!
+    </div>
+	<div class="col-md-3" style="height:200px; background-color:#D4D4D4">
+    	details here..!
+    </div>
+	<div class="col-md-3" style="height:200px; background-color:#DDDDDD">
+    	details here..!
+    </div>
+	<div class="col-md-3" style="height:200px; background-color:#D4D4D4">
+    	details here..!
+    </div>
+</div>
+
+
+
+<!-- ******* End of Editable Area ******* -->
+<footer class="container-fluid">
+    <div class="col-md-3" style="height:200px; ">
+    	<h4>Why choose us?</h4>
+       
+    </div>
+    
+    <div class="col-md-3" style="height:200px; ">
+    	<h4>Help &amp; information</h4>
+        support links
+    </div>
+    <div class="col-md-3" style="height:200px; ">
+    	<h4>Contact info..</h4>
+        tel :<br>
+		address : <br>
+		email : 
+    </div>
+    <div class="col-md-3" style="height:200px; ">
+    	<h4>Get in touch</h4>
+        Social Media links
+    </div>
+    <p align="right">&copy; 2017 Lak Restaurant. - Developed by <a href="#" target="_blank"><strong>Gihan Wijesekara</strong></a></p>
+
+
+</footer>
+</body>
+</html>
+
+
+

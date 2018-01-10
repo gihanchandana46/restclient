@@ -1,0 +1,202 @@
+	
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/style_admin.css" type="text/css"/>
+	<link rel="stylesheet" href="../css/dataTables.bootstrap.min.css" >
+
+	<script src="../js/jquery-2.1.4.js"></script>
+	<script src="../js/dataTables.bootstrap.min.js"></script>
+	<script src="../js/jquery.dataTables.min.js"></script>
+	<script src="../js/order_managment.js"></script>
+	<script src="../js/dataTables.responsive.min.js"></script>
+		
+
+
+				
+	<div class="contenr-inside">
+		
+			<h4><br>&nbsp;&nbsp;&nbsp; <b> Completed Orders Page </b><br><br></h4>
+						
+	<form method="post">
+		<div class="table-responsive">
+	<table class="table table-hover">
+	<thead>
+	<tr>
+	<th>Order ID</th>
+	<th>CustID</th>
+	<th>OrderStatus</th>
+	<th>ShipCity</th>
+	<th>TotalPrice</th>
+	<th>Payment</th>
+	<th>Transaction</th>
+	<th>TrackingID</th>
+	<th>control</th>
+
+	</tr>
+	</thead>
+	<tbody>
+		
+			
+	<!--popiulate data-->	
+		
+	<?php
+
+	$sql = "SELECT orderID,customer,orderStatus,ship_city,totalPrice,paymentMethod,transactionID,trackingID FROM `order` where orderStatus='Completed' ";
+	require  '../../dbc.php';
+	$plistquery=mysqli_query($conn,$sql);
+		
+
+	while ($runlist=mysqli_fetch_array($plistquery)) {
+
+	$orderID=$runlist['orderID'];
+	$customer=$runlist['customer'];
+	$orderStatus=$runlist['orderStatus'];
+	$ship_city=$runlist['ship_city'];
+	$totalPrice=$runlist['totalPrice'];
+	$paymentMethod=$runlist['paymentMethod'];
+	$transactionID=$runlist['transactionID'];
+	$trackingID=$runlist['trackingID'];
+	
+	
+	
+	?>
+	
+		
+
+	<tr>
+
+	<td><?php echo $orderID?></td>
+	<td><?php echo $customer?></td>
+	<td><?php echo $orderStatus?></td>
+	<td><?php echo $ship_city?></td>
+	<td><?php echo $totalPrice?></td>
+	<td><?php echo $paymentMethod?></td>
+	<td><?php echo $transactionID?>	</td>
+	<td><?php echo $trackingID ?> </td>
+
+	<td>
+			
+	<a class='label label-default' style='padding:7px 15px; ' data-toggle="modal" data-target="#myModal<?php echo $orderID?>" >Edit</a> 
+  	
+</button>
+
+	<!-- create a Modal and get data to iy -->
+	
+<div class="modal" id="myModal<?php echo $orderID?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<?php echo $orderID?>">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel<?php echo $orderID?>">Update Order Details</h4>
+      </div>
+      <div class="modal-body">
+       
+		<form method="post">
+			
+			<div class="form-group">
+				<label for="orderID">Order ID</label>
+				<input type="text" disabled class="form-control" id="orderID<?php echo $orderID?>" value="<?php echo $orderID?>">
+			</div>
+			
+			<div class="form-group">
+				<label for="custID">CustomerID</label>
+				<input type="text" disabled class="form-control" id="custID<?php echo $orderID?>" value="<?php echo $customer?>">
+			</div>
+			
+			<div class="form-group">
+				<label for="status">Status</label>
+				<input type="text" disabled class="form-control" id="status<?php echo $orderID?>" value="<?php echo $orderStatus?>">
+			</div>
+			
+			<div class="form-group">
+				<label for="trackNo">TrackingNo</label>
+				<input type="text" disabled class="form-control" id="trackNo<?php echo $orderID?>" value="<?php echo $trackingID ?>">
+			</div>
+			
+		
+					</form>
+							
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button " onclick="deleteDataCompletedOrder('<?php echo $orderID?>')"  class="btn btn-warning" data-dismiss="modal">Delete</button>
+        
+           <!--Update Data-->
+           
+                     
+           
+           
+           	
+			<!--Delete Data -->
+			
+			<?php 
+			
+			
+			require  '../../dbc.php';
+				
+			
+			if ($conn->connect_error) {
+  			die("Connection failed: " . $conn->connect_error);
+			} 
+		
+			if (isset($_POST["orderID"])){
+					
+			$orderID=$_POST['orderID'];
+			
+			$sql = "DELETE  from `order` WHERE orderID='".$orderID."'";
+			
+			
+			if (mysqli_query($conn, $sql)) {
+   			 echo "Record updated successfully";
+			
+			} else {
+				
+   			 echo "Error updating record: " . mysqli_error($conn);
+			}
+			  
+			}
+			  			
+			mysqli_close($conn);				
+						
+							
+			?>	
+		
+			   
+      		
+        			  		
+                       
+      </div>
+    </div>
+  </div>
+</div>
+
+	
+				
+
+
+	
+	
+	
+	
+</td>	</tr>
+<?php
+}
+?>
+
+</tbody>
+
+</table>
+</div>
+
+
+
+</form>
+
+						
+					 	
+						
+						</div>
+                       
+                    
+    
+		
+	
